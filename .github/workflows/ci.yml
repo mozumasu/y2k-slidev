@@ -1,0 +1,80 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  # main 以外を向いた PR (積んだ PR) でも CI を走らせる。ベースが main に付け替わった
+  # ときに必須チェックが揃っているようにするため
+  pull_request:
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-slim
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # バージョンは package.json の packageManager フィールドから読む
+      - name: Setup pnpm
+        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+        with:
+          package_json_file: package.json
+
+      - name: Setup Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        id: install
+        run: pnpm install --frozen-lockfile
+
+      # lint が落ちても後続の結果が見えるよう、以降は install 成功時に限り続行する
+      # (always() だとキャンセル時や install 失敗時にも走り、原因が埋もれる)
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: pnpm typecheck
+
+      # Vue / Slidev ランタイムに依存しない純粋関数の単体テスト (node --test)
+      - name: Test
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: pnpm test
+
+      # 各パッケージの example.md がビルドできることを確認する
+      # (レイアウト・コンポーネントのコンパイルエラーを検知する smoke テスト)
+      - name: Build packages
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: pnpm -r build
+
+  # Node 不要なので check job とは分ける
+  markdown-lint:
+    runs-on: ubuntu-slim
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Lint Markdown
+        uses: rvben/rumdl@9c4cc2a2ebe176de68e1788106e25af8a9bd3899 # v0.2.78
+        with:
+          version: 0.2.64

@@ -1,0 +1,29 @@
+version: 2
+updates:
+  # actions は full SHA で pin しているので、更新は Dependabot に任せる
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    assignees:
+      - mozumasu
+
+  # npm (pnpm workspace) の依存。PR が増えすぎないようにまとめる
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    assignees:
+      - mozumasu
+    groups:
+      # Slidev 本体は互いにバージョンを揃える必要があるので 1 つの PR にする
+      slidev:
+        patterns:
+          - '@slidev/*'
+      # それ以外の minor / patch はまとめて 1 つの PR にする (major は個別の PR)
+      dependencies:
+        patterns:
+          - '*'
+        update-types:
+          - minor
+          - patch
