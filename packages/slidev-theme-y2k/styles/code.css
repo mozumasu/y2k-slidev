@@ -1,0 +1,94 @@
+/* コードを入れる「すりガラスの窓」。code / code-compare レイアウトで共通に使う。
+   窓そのものが枠と影を持つので、中のコードブロックは背景と枠を消して透明にする。
+   窓は親の高さを上限に、収まらないコードは窓の中でスクロールする */
+.slidev-layout .y2k-code-window {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--y2k-radius);
+  background: var(--y2k-glass-strong);
+  box-shadow: var(--y2k-shadow-float);
+  backdrop-filter: blur(var(--y2k-glass-blur)) saturate(1.3);
+}
+
+/* ホログラムの 1px の縁 (Y2kWindow と同じ描き方) */
+.slidev-layout .y2k-code-window::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: var(--y2k-holo);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.slidev-layout .y2k-code-window__bar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.45rem 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--y2k-radius) var(--y2k-radius) 0 0;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.slidev-layout .y2k-code-window__dots {
+  display: flex;
+  gap: 0.35rem;
+}
+
+/* 1 つ目のボタンだけビビッドなピンクにして、窓の目印にする */
+.slidev-layout .y2k-code-window__dots > span {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff 0 25%, var(--y2k-chrome-mid) 70%, var(--y2k-chrome-dark) 100%);
+  box-shadow: 0 0 0 0.5px rgba(42, 36, 49, 0.25);
+}
+
+.slidev-layout .y2k-code-window__dots > span:first-child {
+  background: radial-gradient(circle at 35% 30%, #fff 0 20%, var(--y2k-pink) 65%, var(--y2k-pink-deep) 100%);
+}
+
+.slidev-layout .y2k-code-window__file {
+  color: var(--y2k-ink-soft);
+  font-family: var(--slidev-code-font-family, monospace);
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+}
+
+.slidev-layout .y2k-code-window__body {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 0 0 var(--y2k-radius) var(--y2k-radius);
+}
+
+.slidev-layout .y2k-code-window__body > * {
+  min-height: 0;
+  margin: 0 !important;
+}
+
+.slidev-layout .y2k-code-window__body .slidev-code-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+}
+
+.slidev-layout .y2k-code-window__body pre.slidev-code {
+  min-height: 0;
+  overflow: auto;
+  border: 0;
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none;
+  backdrop-filter: none;
+}

@@ -1,0 +1,99 @@
+/* デザイントークン。テーマ・アドオン全体で参照する
+   高級感のある Y2K: 真珠の地に、クロームの銀・ホログラムの細い線・すりガラスを重ねる。
+   彩度の高い色は使わず、ローズとアイスブルーを少しだけ差す */
+:root {
+  /* 真珠 (背景のグラデーション) */
+  --y2k-pearl: #f4f1f7;
+  --y2k-pearl-rose: #efdfeb;
+  --y2k-pearl-ice: #dde6f3;
+  --y2k-pearl-mint: #e0efec;
+  --y2k-pearl-champagne: #f3ead9;
+
+  /* アクセント。ビビッドなピンクを主役にし、ほかは真珠と銀で落ち着かせる */
+  --y2k-pink: #ff4fc3; /* ウィンドウの地・レトロ 3D の影 */
+  --y2k-pink-deep: #d42a9c; /* 強調テキスト・リンク (真珠の地で読める濃さ) */
+  --y2k-rose: var(--y2k-pink-deep);
+  --y2k-rose-soft: #e9c3d8;
+  --y2k-ice: #7f97c4;
+  --y2k-ink: #2a2431; /* 本文。黒ではなく紫がかった墨色 */
+  --y2k-ink-soft: #5d5566;
+  --y2k-white: #ffffff;
+
+  /* クローム (銀)。白だけの帯を作ると真珠の地に溶けるので、暗い銀を挟んで輪郭を出す */
+  --y2k-chrome-light: #ffffff;
+  --y2k-chrome-mid: #c3c8d5;
+  --y2k-chrome-dark: #4a4f61;
+  --y2k-chrome-text: linear-gradient(
+    180deg,
+    #6b7083 0%,
+    #d9dce5 28%,
+    #ffffff 42%,
+    #858a9c 54%,
+    #3d4153 68%,
+    #a9aebd 86%,
+    #e6e8ef 100%
+  );
+
+  /* ホログラム (細い線・縁取り) */
+  --y2k-holo: linear-gradient(
+    100deg,
+    #f2bfdc,
+    #c3cff7,
+    #bfeee6,
+    #f6e3b8,
+    #e6c4f3,
+    #f2bfdc
+  );
+
+  /* すりガラス */
+  --y2k-glass: rgba(255, 255, 255, 0.42);
+  --y2k-glass-strong: rgba(255, 255, 255, 0.62);
+  --y2k-glass-blur: 14px;
+  --y2k-glass-line: rgba(255, 255, 255, 0.85);
+
+  /* 背景のアニメーション */
+  --y2k-bg-gradient: linear-gradient(
+    125deg,
+    var(--y2k-pearl-ice),
+    var(--y2k-pearl),
+    var(--y2k-pearl-rose),
+    var(--y2k-pearl-champagne),
+    var(--y2k-pearl-mint),
+    var(--y2k-pearl-ice)
+  );
+  --y2k-bg-duration: 32s; /* 一往復の時間。短くすると目が疲れるので 20s 以上にする */
+  --y2k-glow-duration: 26s;
+  --y2k-sheen-duration: 14s; /* 光の筋が画面を横切る間隔 */
+
+  /* 役割ごとの色 */
+  --y2k-primary: var(--y2k-rose);
+  --y2k-text: var(--y2k-ink);
+  --y2k-muted: var(--y2k-ink-soft);
+
+  /* 文字 */
+  --y2k-font-display: 'Poppins', 'M PLUS Rounded 1c', sans-serif; /* 見出しも本文と同じ丸みのある書体。太さとイタリックで差を付ける */
+  --y2k-font-size-caption: 0.62rem;
+  --y2k-font-size-body: 1rem;
+  --y2k-font-size-heading: 2.1rem;
+  --y2k-font-size-display: 4rem;
+  --y2k-tracking-caps: 0.32em; /* 小さな英字の見出し (eyebrow) の字間 */
+
+  /* 余白・角丸・影 */
+  --y2k-slide-padding-x: 4rem;
+  --y2k-slide-padding-y: 2.75rem;
+  --y2k-radius: 14px;
+  --y2k-window-offset: 0.55rem; /* 重ねたガラスのずらし幅 */
+  --y2k-shadow-float: 0 1.2rem 2.6rem -0.8rem rgba(42, 36, 49, 0.22);
+  --y2k-shadow-chrome: 0 0.15rem 0.35rem rgba(42, 36, 49, 0.28);
+  /* レトロ 3D の文字。白の字にピンク → 墨の順で影を重ねる */
+  --y2k-shadow-retro:
+    0.035em 0.035em 0 var(--y2k-pink),
+    0.07em 0.07em 0 var(--y2k-ink);
+  --y2k-shadow-retro-sm: 2px 2px 0 var(--y2k-pink);
+  --y2k-ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+
+  /* Slidev 組み込み UI (code-group のタブ下線など) が参照する変数 */
+  --slidev-theme-primary: var(--y2k-primary);
+  --slidev-code-background: rgba(255, 255, 255, 0.55);
+  --slidev-code-radius: 10px;
+}

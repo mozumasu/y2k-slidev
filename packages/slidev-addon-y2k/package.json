@@ -1,0 +1,30 @@
+{
+  "name": "slidev-addon-y2k",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Y2K-style decorations and retro window cards for Slidev",
+  "license": "MIT",
+  "keywords": [
+    "slidev-addon",
+    "slidev"
+  ],
+  "engines": {
+    "node": ">=20.12.0"
+  },
+  "scripts": {
+    "dev": "slidev example.md --port ${PORT:-3030} --remote --bind 127.0.0.1",
+    "build": "slidev build example.md",
+    "export": "slidev export example.md"
+  },
+  "peerDependencies": {
+    "@slidev/client": ">=52",
+    "vue": "^3"
+  },
+  "dependencies": {
+    "@slidev/types": "^53.0.0",
+    "slidev-theme-y2k": "workspace:*"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^53.0.0"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "slidev-theme-y2k",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Y2K-style pastel Slidev theme with a slowly drifting gradient background",
+  "license": "MIT",
+  "keywords": [
+    "slidev-theme",
+    "slidev"
+  ],
+  "engines": {
+    "node": ">=20.12.0"
+  },
+  "scripts": {
+    "dev": "slidev example.md --port ${PORT:-3030} --remote --bind 127.0.0.1",
+    "build": "slidev build example.md",
+    "export": "slidev export example.md",
+    "screenshot": "slidev export example.md --format png"
+  },
+  "peerDependencies": {
+    "@slidev/client": ">=52",
+    "vue": "^3"
+  },
+  "dependencies": {
+    "@slidev/types": "^53.0.0"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^53.0.0",
+    "@slidev/client": "^53.0.0",
+    "playwright-chromium": "^1.61.1",
+    "slidev-addon-y2k": "workspace:*"
+  },
+  "//": "Learn more: https://sli.dev/guide/write-theme.html",
+  "slidev": {
+    "colorSchema": "light",
+    "highlighter": "shiki",
+    "defaults": {
+      "fonts": {
+        "sans": "Poppins,M PLUS Rounded 1c",
+        "mono": "Fira Code",
+        "provider": "none"
+      },
+      "aspectRatio": "16/9",
+      "canvasWidth": 1000,
+      "transition": "fade"
+    }
+  }
+}

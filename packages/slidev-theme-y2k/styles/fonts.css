@@ -1,0 +1,5 @@
+/* Web フォントはテーマで読み込む (package.json の fonts.provider は none)。
+   Slidev に任せると、italic: true のときにすべての書体へイタリックの太さを指定した 1 本の URL を作る。
+   M PLUS Rounded 1c にはイタリックが無いので Google Fonts がリクエストごと受け付けず、
+   日本語がシステムのゴシックで表示される。書体ごとに持っている軸だけを指定する */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;0,800;1,400;1,500;1,700;1,800&family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Fira+Code:wght@400;500&display=swap');

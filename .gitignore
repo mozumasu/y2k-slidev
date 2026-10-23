@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.direnv/
+.rumdl_cache/
+.playwright-mcp/
+# スクリーンショット検証で root に溜まる png はコミットしない
+/*.png
+*.tsbuildinfo
+# Claude Code のサブエージェント用 worktree
+.claude/worktrees/
+# pnpm screenshot / slidev export の出力
+example-export/

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#fbf7fb"/>
+  <rect x="0" y="0" width="180" height="500" fill="#f3e6f1"/>
+  <rect x="28" y="40" width="110" height="14" rx="7" fill="#ff4fc3"/>
+  <rect x="28" y="90" width="120" height="10" rx="5" fill="#d9c7d6"/>
+  <rect x="28" y="120" width="96" height="10" rx="5" fill="#d9c7d6"/>
+  <rect x="28" y="150" width="108" height="10" rx="5" fill="#d9c7d6"/>
+  <rect x="220" y="40" width="260" height="22" rx="11" fill="#2a2431"/>
+  <rect x="220" y="96" width="250" height="150" rx="16" fill="#ffffff" stroke="#efdfeb"/>
+  <rect x="500" y="96" width="250" height="150" rx="16" fill="#ffffff" stroke="#efdfeb"/>
+  <circle cx="270" cy="150" r="26" fill="#ffb3e6"/>
+  <rect x="310" y="136" width="130" height="10" rx="5" fill="#d9c7d6"/>
+  <rect x="310" y="156" width="90" height="10" rx="5" fill="#ece1ea"/>
+  <polyline points="530,220 580,180 630,200 680,140 720,160" fill="none" stroke="#ff4fc3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="220" y="276" width="530" height="190" rx="16" fill="#ffffff" stroke="#efdfeb"/>
+  <rect x="250" y="306" width="200" height="12" rx="6" fill="#d9c7d6"/>
+  <rect x="250" y="336" width="470" height="10" rx="5" fill="#ece1ea"/>
+  <rect x="250" y="360" width="430" height="10" rx="5" fill="#ece1ea"/>
+  <rect x="250" y="384" width="450" height="10" rx="5" fill="#ece1ea"/>
+  <rect x="250" y="420" width="110" height="26" rx="13" fill="#ff4fc3"/>
+</svg>

@@ -1,0 +1,148 @@
+/* グローバル CSS はプレゼンター UI にも当たるため .slidev-layout でスコープする */
+
+/* 背景は global-bottom.vue の動くグラデーションを見せるため透明にする。
+   スライドごとに背景を敷くとページ送りのたびにアニメーションが最初からになる */
+.slidev-layout {
+  color: var(--y2k-text);
+  background: transparent;
+  padding: var(--y2k-slide-padding-y) var(--y2k-slide-padding-x);
+  font-size: var(--y2k-font-size-body);
+  letter-spacing: 0.02em;
+}
+
+/* 見出しは丸みのある書体の太いイタリック */
+.slidev-layout h1 {
+  margin-bottom: 1.5rem;
+  color: var(--y2k-ink);
+  font-family: var(--y2k-font-display);
+  font-size: var(--y2k-font-size-heading);
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-shadow: var(--y2k-shadow-retro-sm);
+}
+
+/* 見出しの下にホログラムの細い線を引く */
+.slidev-layout h1::after {
+  content: '';
+  display: block;
+  width: 3.5rem;
+  height: 2px;
+  margin-top: 0.7rem;
+  border-radius: 999px;
+  background: var(--y2k-holo);
+}
+
+.slidev-layout h2,
+.slidev-layout h3 {
+  font-family: var(--y2k-font-display);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.slidev-layout a {
+  color: var(--y2k-primary);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.slidev-layout strong {
+  color: var(--y2k-rose);
+  font-weight: 700;
+}
+
+/* 箇条書きのマーカーは小さなローズのキラキラ (✦) */
+.slidev-layout ul > li {
+  list-style: none;
+  position: relative;
+}
+
+.slidev-layout ul > li::before {
+  content: '✦';
+  position: absolute;
+  left: -1.3em;
+  top: 0.05em;
+  color: var(--y2k-rose);
+  font-size: 0.8em;
+}
+
+.slidev-layout blockquote {
+  border-left: 2px solid var(--y2k-rose-soft);
+  background: var(--y2k-glass);
+  color: var(--y2k-ink);
+  font-family: var(--y2k-font-display);
+  font-style: italic;
+}
+
+.slidev-layout code:not(pre code) {
+  padding: 0.1em 0.4em;
+  border-radius: 6px;
+  background: var(--y2k-glass-strong);
+  color: var(--y2k-rose);
+}
+
+/* コードブロックはすりガラスに白い縁 */
+.slidev-layout pre.slidev-code {
+  border: 1px solid var(--y2k-glass-line);
+  box-shadow: var(--y2k-shadow-float);
+  backdrop-filter: blur(var(--y2k-glass-blur));
+}
+
+/* 小さな英字の見出し。表紙・章扉・ウィンドウのラベルで使う */
+.slidev-layout .y2k-eyebrow {
+  margin: 0;
+  color: var(--y2k-ink-soft);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: var(--y2k-tracking-caps);
+  text-transform: uppercase;
+}
+
+/* レトロ 3D の大見出し。cover / section / end で使う。
+   丸みのある書体の太いイタリックにする */
+.slidev-layout .y2k-display {
+  margin: 0;
+  color: var(--y2k-white);
+  font-family: var(--y2k-font-display);
+  font-size: var(--y2k-font-size-display);
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 0.005em;
+  text-shadow: var(--y2k-shadow-retro);
+}
+
+/* 大見出しの下は .y2k-rule で中央に線を引くので、h1 の短い線は出さない */
+.slidev-layout .y2k-display::after {
+  display: none;
+}
+
+/* ホログラムの細い区切り線 */
+.slidev-layout .y2k-rule {
+  display: block;
+  width: 9rem;
+  height: 1px;
+  margin: 1.4rem auto;
+  border: 0;
+  background: var(--y2k-holo);
+}
+
+/* 装飾は本文より後ろに置き、クリックを妨げない */
+.slidev-layout .y2k-decor {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.slidev-layout .y2k-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Slidev のリンクの点線の下線は、目次や自己紹介のピルのように
+   リンクだと形で分かる所では消す */
+.slidev-layout .y2k-toc a,
+.slidev-layout .y2k-profile__links a {
+  border-bottom: 0;
+}
