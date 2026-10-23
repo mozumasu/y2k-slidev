@@ -3,7 +3,7 @@ import { useNav } from '@slidev/client'
 
 // 全スライド共通の背景。スライドの下のレイヤーに 1 枚だけ置くので、
 // ページを送ってもグラデーションの動きが途切れない。
-// 真珠のグラデーション → ぼかした光 → ときどき横切る光の筋 → 細かな粒子 の順に重ねる。
+// パステルのグラデーション → ぼかした光 → 細かな粒子 の順に重ねる。
 // 書き出し (PDF / PNG) ではコマごとに位置がずれないよう止める
 const { isPrintMode } = useNav()
 
@@ -22,7 +22,6 @@ const glints = [
   <div class="y2k-bg" :class="{ 'is-static': isPrintMode }" aria-hidden="true">
     <span class="y2k-bg__glow is-a" />
     <span class="y2k-bg__glow is-b" />
-    <span class="y2k-bg__sheen" />
     <span class="y2k-bg__grain" />
     <svg
       v-for="(g, i) in glints"
@@ -47,7 +46,7 @@ const glints = [
   animation: y2k-bg-drift var(--y2k-bg-duration) var(--y2k-ease-in-out) infinite alternate;
 }
 
-/* ぼかした光のかたまりを 2 つ漂わせ、真珠の照りのような揺らぎを足す */
+/* ぼかした光のかたまりを 2 つ漂わせ、オーロラのような揺らぎを足す */
 .y2k-bg__glow {
   position: absolute;
   width: 55%;
@@ -61,32 +60,15 @@ const glints = [
 .y2k-bg__glow.is-a {
   top: -25%;
   left: -12%;
-  background: var(--y2k-pearl-rose);
+  background: var(--y2k-blush);
 }
 
 .y2k-bg__glow.is-b {
   right: -18%;
   bottom: -30%;
-  background: var(--y2k-pearl-ice);
+  background: var(--y2k-aqua);
   animation-delay: calc(var(--y2k-glow-duration) / -2);
   animation-direction: alternate-reverse;
-}
-
-/* 斜めの光の筋。磨いた金属に光が走るように、ときどき左から右へ横切る */
-.y2k-bg__sheen {
-  position: absolute;
-  inset: -50% auto -50% 0;
-  width: 30%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.45) 45%,
-    rgba(255, 255, 255, 0.7) 50%,
-    rgba(255, 255, 255, 0.45) 55%,
-    transparent
-  );
-  transform: translateX(-150%) rotate(18deg);
-  animation: y2k-sheen var(--y2k-sheen-duration) var(--y2k-ease-in-out) infinite;
 }
 
 /* 印刷物のような細かな粒子。のっぺりしたグラデーションに質感を足す */
@@ -112,13 +94,9 @@ const glints = [
   animation: none;
 }
 
-/* 止めたときは色が一番重なる中ほどの位置にし、光の筋は消し、きらめきは見せる */
+/* 止めたときは色が一番重なる中ほどの位置にし、きらめきは見せる */
 .y2k-bg.is-static {
   background-position: 50% 50%;
-}
-
-.y2k-bg.is-static .y2k-bg__sheen {
-  display: none;
 }
 
 .y2k-bg.is-static .y2k-bg__glint {
@@ -129,10 +107,6 @@ const glints = [
   .y2k-bg,
   .y2k-bg > * {
     animation: none;
-  }
-
-  .y2k-bg__sheen {
-    display: none;
   }
 
   .y2k-bg__glint {
@@ -158,17 +132,6 @@ const glints = [
   }
   100% {
     transform: translate(35%, 20%) scale(1.15);
-  }
-}
-
-/* 一周期の前半で横切り、後半は画面外で待つ */
-@keyframes y2k-sheen {
-  0% {
-    transform: translateX(-150%) rotate(18deg);
-  }
-  45%,
-  100% {
-    transform: translateX(450%) rotate(18deg);
   }
 }
 

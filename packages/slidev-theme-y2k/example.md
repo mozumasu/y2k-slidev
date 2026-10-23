@@ -8,7 +8,7 @@ eyebrow: Slidev Night · 2026
 subtitle: "@mozumasu"
 ---
 
-真珠の地にクロームを重ねた、高級感のある Y2K テーマ
+パステルのグラデーションがゆっくり動く Y2K テーマ
 
 ---
 layout: toc

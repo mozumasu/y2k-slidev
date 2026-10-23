@@ -1,17 +1,9 @@
 /* デザイントークン。テーマ・アドオン全体で参照する
-   高級感のある Y2K: 真珠の地に、クロームの銀・ホログラムの細い線・すりガラスを重ねる。
-   彩度の高い色は使わず、ローズとアイスブルーを少しだけ差す */
+   パステルのグラデーションに、ビビッドなピンク・クロームの銀・ホログラムの細い線・すりガラスを重ねる */
 :root {
-  /* 真珠 (背景のグラデーション) */
-  --y2k-pearl: #f4f1f7;
-  --y2k-pearl-rose: #efdfeb;
-  --y2k-pearl-ice: #dde6f3;
-  --y2k-pearl-mint: #e0efec;
-  --y2k-pearl-champagne: #f3ead9;
-
-  /* アクセント。ビビッドなピンクを主役にし、ほかは真珠と銀で落ち着かせる */
+  /* アクセント。ビビッドなピンクを主役にし、ほかはパステルと銀で落ち着かせる */
   --y2k-pink: #ff4fc3; /* ウィンドウの地・レトロ 3D の影 */
-  --y2k-pink-deep: #d42a9c; /* 強調テキスト・リンク (真珠の地で読める濃さ) */
+  --y2k-pink-deep: #d42a9c; /* 強調テキスト・リンク (パステルの地で読める濃さ) */
   --y2k-rose: var(--y2k-pink-deep);
   --y2k-rose-soft: #e9c3d8;
   --y2k-ice: #7f97c4;
@@ -19,7 +11,7 @@
   --y2k-ink-soft: #5d5566;
   --y2k-white: #ffffff;
 
-  /* クローム (銀)。白だけの帯を作ると真珠の地に溶けるので、暗い銀を挟んで輪郭を出す */
+  /* クローム (銀)。白だけの帯を作るとパステルの地に溶けるので、暗い銀を挟んで輪郭を出す */
   --y2k-chrome-light: #ffffff;
   --y2k-chrome-mid: #c3c8d5;
   --y2k-chrome-dark: #4a4f61;
@@ -51,19 +43,24 @@
   --y2k-glass-blur: 14px;
   --y2k-glass-line: rgba(255, 255, 255, 0.85);
 
+  /* 背景のパステル。白い文字が埋もれない彩度にする */
+  --y2k-aqua: #a6e9f7;
+  --y2k-sky: #b9d4fb;
+  --y2k-lavender: #cdb8f5;
+  --y2k-blush: #f4bde9;
+
   /* 背景のアニメーション */
   --y2k-bg-gradient: linear-gradient(
-    125deg,
-    var(--y2k-pearl-ice),
-    var(--y2k-pearl),
-    var(--y2k-pearl-rose),
-    var(--y2k-pearl-champagne),
-    var(--y2k-pearl-mint),
-    var(--y2k-pearl-ice)
+    120deg,
+    var(--y2k-aqua),
+    var(--y2k-sky),
+    var(--y2k-lavender),
+    var(--y2k-blush),
+    var(--y2k-lavender),
+    var(--y2k-aqua)
   );
   --y2k-bg-duration: 32s; /* 一往復の時間。短くすると目が疲れるので 20s 以上にする */
   --y2k-glow-duration: 26s;
-  --y2k-sheen-duration: 14s; /* 光の筋が画面を横切る間隔 */
 
   /* 役割ごとの色 */
   --y2k-primary: var(--y2k-rose);
