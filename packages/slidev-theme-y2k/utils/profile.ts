@@ -1,9 +1,9 @@
 // profile レイアウトの名前・links (名前の下のグレーの行) を整える。
 // frontmatter の値は型が保証されないので、ここで形をそろえて不正な項目を落とす
 
-/** 右カラムの 1 項目 (アドオンの <FeatureList> の items と同じ形) */
+/** 右カラムの 1 項目 (アドオンの <Y2kFeatureList> の items と同じ形) */
 export interface ProfileSection {
-  /** 赤の英字見出し (例: WORK)。大文字で表示する */
+  /** ピンクの見出し (例: Work)。書いたとおりに表示する */
   title: string
   /** 説明。<em> / <strong> / <br> だけを解釈する */
   description?: string

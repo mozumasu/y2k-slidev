@@ -5,7 +5,7 @@
 | package | 内容 |
 | ------- | ---- |
 | [`slidev-theme-y2k`](./packages/slidev-theme-y2k) | 背景・配色・文字・レイアウト (cover / toc / profile / default / section / two-cols / image-left / image-right / code / code-compare / statement / qa / end) |
-| [`slidev-addon-y2k`](./packages/slidev-addon-y2k) | コンポーネント (Y2kWindow / Y2kSteps / Y2kCodeSteps / Y2kHeart / Y2kSparkle / Y2kBubble) |
+| [`slidev-addon-y2k`](./packages/slidev-addon-y2k) | コンポーネント (Y2kWindow / Y2kSteps / Y2kCodeSteps / Y2kFeatureList / Y2kSpeechBubble / Y2kHeart / Y2kSparkle / Y2kBubble) |
 
 ## 使い方
 
@@ -23,11 +23,18 @@ addons:
 
 ## 背景
 
-背景のグラデーションは全スライド共通のレイヤー (`global-bottom.vue`) に 1 枚だけ置き、32 秒かけてゆっくり往復させています。その上に、小さなきらめきと細かな粒子を重ねています。スライドごとに背景を描いていないので、ページを送っても動きは途切れません。
+背景のグラデーションは全スライド共通のレイヤー (`global-bottom.vue`) に 1 枚だけ置き、18 秒かけて往復させています。その上に、小さなきらめきと細かな粒子を重ねています。スライドごとに背景を描いていないので、ページを送っても動きは途切れません。
 
 - 往復の時間は CSS 変数 `--y2k-bg-duration` で変えられます
 - PDF や PNG に書き出すときと、OS で「視差効果を減らす」(`prefers-reduced-motion`) を有効にしているときは止まります
 - 1 枚だけ別の背景にしたいときは、frontmatter に `background:` を書きます
+
+## 目次ドロワーとプログレスバー
+
+どのスライドにも次の 2 つが付きます。PDF や PNG に書き出すときと、プレゼンター画面には出ません。
+
+- 目次ドロワー: ウィンドウの右端にカーソルを寄せると、目次が引き出されます。項目を押すとそのスライドへ移ります。項目は `toc` レイアウトと同じで、各スライドの `toc: ラベル` (`tocLevel: 2` で子項目) か、無ければスライドタイトルの階層です
+- プログレスバー: スライドの下端に、今どこまで進んだかを出します。押すかドラッグすると、その位置のスライドへ移ります
 
 ## レイアウト
 
@@ -35,7 +42,7 @@ addons:
 | ------ | ---- | ---------------- |
 | `cover` | 表紙 | `title` / `eyebrow` (タイトル上の小さな英字) / `subtitle` (発表者名など) / `decor: false` で装飾を消す |
 | `toc` | 目次 | 各スライドの `toc: ラベル` を並べる (`tocLevel: 2` で子項目)。1 つも無ければスライドタイトルの階層を使う。`columns: 2` で 2 段組み |
-| `profile` | 自己紹介 | `name` (末尾の括弧書きは小さく出る) / `affiliation` / `image` / `links` / `sections`。本文 (md) を書くと `sections` の代わりに右に出る |
+| `profile` | 自己紹介 | `name` (末尾の括弧書きは小さく出る) / `affiliation` / `image` / `links` / `sections`。右の項目は本文の箇条書き (`- **Work** 説明`) でも書け、先頭の太字が見出しになる |
 | `default` | 本文 | 見出しは md の `# 見出し` で書く。`eyebrow` で見出しの上に小さな英字を出す |
 | `section` | 章扉 | `title` / `no` (章番号) / `eyebrow` (既定は `Chapter`) / `decor: false` |
 | `two-cols` | 2 カラム | `title` / `ratio` / `reverse` / `align`。本文が左、`::right::` 以降が右。`::left::` を使うと、その前の本文が全幅のリード文になる |
@@ -77,4 +84,6 @@ addons:
 ```
 
 - `Y2kSteps`: 手順を横に並べます。`variant` は `card` (すりガラスのカード、既定) と `chevron` (矢羽根) から選べます。`current` 番目までをピンクにし、残りを薄くします。v-click で 1 つずつ進めるときは `:current="$clicks + 1"` を指定します
+- `Y2kFeatureList`: ピンクの英字見出しと説明を縦に並べます。`profile` の右側でも使っています。項目は `items` か、本文の箇条書き (`- **Work** 説明`) で渡します
+- `Y2kSpeechBubble`: 丸いアイコンの横に、しっぽ付きの吹き出しでひとことを添えます。アイコンは `image` か `#icon` スロットで渡し、`name` で下に名前を出せます。`side="right"` でアイコンを右に置き、会話の相手側にします。`color="pink"` でピンクの吹き出し、`size="lg"` で大きな吹き出しになり、`pinned` を付けるとスライドの下端中央に固定します
 - `Y2kCodeSteps`: `code` レイアウトの説明側に置き、コードの行ハイライト (`{1-5|8-12}`) と同じクリックで説明を 1 つずつ強調します。`text` の `<em>` はピンクになります

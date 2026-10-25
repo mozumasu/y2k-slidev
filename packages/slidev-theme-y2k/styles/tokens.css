@@ -59,8 +59,8 @@
     var(--y2k-lavender),
     var(--y2k-aqua)
   );
-  --y2k-bg-duration: 32s; /* 一往復の時間。短くすると目が疲れるので 20s 以上にする */
-  --y2k-glow-duration: 26s;
+  --y2k-bg-duration: 18s; /* 一往復の時間。短くしすぎると目が疲れるので 12s 以上にする */
+  --y2k-glow-duration: 14s;
 
   /* 役割ごとの色 */
   --y2k-primary: var(--y2k-rose);

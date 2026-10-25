@@ -25,14 +25,12 @@ links:
     url: https://x.com/mozumasu
   - label: "GitHub: mozumasu"
     url: https://github.com/mozumasu
-sections:
-  - title: Work
-    description: 開発環境と CI を整える仕事をしています
-  - title: Like
-    description: Neovim、WezTerm、Nix
-  - title: Talk
-    description: ターミナルの便利な使い方をよく話します
+# 右の項目は本文の箇条書き。先頭の太字がピンクの英字見出しになる (sections prop でも渡せる)
 ---
+
+- **Work** 開発環境と CI を整える仕事をしています
+- **Like** Neovim、WezTerm、Nix。*dotfiles をいじる時間* が好き
+- **Talk** ターミナルの便利な使い方をよく話します
 
 ---
 layout: section
@@ -209,6 +207,30 @@ toc: image-left / image-right
 - `url` はアドレスバーに出る
 - `frame: false` で窓に入れずに置く
 - `image-left` は左右反転
+
+---
+eyebrow: Component · Y2kSpeechBubble
+tocLevel: 2
+toc: Speech Bubble
+---
+
+# Speech Bubble
+
+<div class="flex flex-col gap-5 mt-2">
+  <Y2kSpeechBubble image="/example-avatar-2.svg" name="audience">
+    背景って PDF でも動くの？
+  </Y2kSpeechBubble>
+  <Y2kSpeechBubble image="/example-avatar.svg" name="mozumasu" side="right" color="pink">
+    書き出しでは止まるよ。<code>isPrintMode</code> を見てる
+  </Y2kSpeechBubble>
+  <Y2kSpeechBubble image="/example-avatar-2.svg" name="audience">
+    なるほど、<code>prefers-reduced-motion</code> でも止まる？
+  </Y2kSpeechBubble>
+</div>
+
+<Y2kSpeechBubble v-click image="/example-avatar.svg" pinned>
+  pinned を付けると下端の中央に固定できる
+</Y2kSpeechBubble>
 
 ---
 layout: statement

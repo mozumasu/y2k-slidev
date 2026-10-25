@@ -3,7 +3,7 @@ import { useNav } from '@slidev/client'
 import { computed } from 'vue'
 import { buildTocItems, tocFromTree } from '../utils/toc.ts'
 
-// toc レイアウトに出す項目。
+// toc レイアウトと目次ドロワー (global-top.vue) に出す項目。
 // frontmatter の `toc: ラベル` を優先し、1 つも無いデッキはスライドタイトルの階層で代用する
 export function useTocItems() {
   const { slides, tocTree } = useNav()

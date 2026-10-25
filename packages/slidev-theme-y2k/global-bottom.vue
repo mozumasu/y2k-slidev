@@ -4,7 +4,8 @@ import { useNav } from '@slidev/client'
 // 全スライド共通の背景。スライドの下のレイヤーに 1 枚だけ置くので、
 // ページを送ってもグラデーションの動きが途切れない。
 // パステルのグラデーション → ぼかした光 → 細かな粒子 の順に重ねる。
-// 書き出し (PDF / PNG) ではコマごとに位置がずれないよう止める
+// 書き出し (PDF / PNG) ではコマごとに位置がずれないよう止める。
+// 下端のプログレスバー (<Y2kProgressBar>) もここに置く
 const { isPrintMode } = useNav()
 
 // 背景に散らす小さなきらめき (位置は % / 大きさは px)
@@ -33,6 +34,7 @@ const glints = [
       <path d="M50 0 C52 40 60 48 100 50 C60 52 52 60 50 100 C48 60 40 52 0 50 C40 48 48 40 50 0Z" />
     </svg>
   </div>
+  <Y2kProgressBar />
 </template>
 
 <style scoped>
@@ -67,8 +69,9 @@ const glints = [
   right: -18%;
   bottom: -30%;
   background: var(--y2k-aqua);
+  /* 右下から始まるので、左上へ向かう別の軌道にする */
+  animation-name: y2k-glow-float-b;
   animation-delay: calc(var(--y2k-glow-duration) / -2);
-  animation-direction: alternate-reverse;
 }
 
 /* 印刷物のような細かな粒子。のっぺりしたグラデーションに質感を足す */
@@ -114,15 +117,19 @@ const glints = [
   }
 }
 
+/* 縦にも大きく振り、色の帯が斜めに流れて見えるようにする */
 @keyframes y2k-bg-drift {
   0% {
-    background-position: 0% 30%;
+    background-position: 0% 0%;
   }
-  50% {
-    background-position: 60% 70%;
+  33% {
+    background-position: 55% 100%;
+  }
+  66% {
+    background-position: 100% 30%;
   }
   100% {
-    background-position: 100% 40%;
+    background-position: 40% 0%;
   }
 }
 
@@ -130,8 +137,23 @@ const glints = [
   0% {
     transform: translate(0, 0) scale(1);
   }
+  50% {
+    transform: translate(45%, 35%) scale(1.25);
+  }
   100% {
-    transform: translate(35%, 20%) scale(1.15);
+    transform: translate(80%, 10%) scale(0.95);
+  }
+}
+
+@keyframes y2k-glow-float-b {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -40%) scale(1.2);
+  }
+  100% {
+    transform: translate(-85%, -5%) scale(0.95);
   }
 }
 
