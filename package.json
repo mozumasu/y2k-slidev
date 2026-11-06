@@ -13,9 +13,9 @@
     "@antfu/eslint-config": "^9.1.0",
     "@slidev/client": "^53.0.0",
     "@slidev/types": "^53.0.0",
-    "eslint": "^10.7.0",
+    "eslint": "^10.14.0",
     "typescript": "^6.0.3",
     "vue": "^3.5.39",
-    "vue-tsc": "^3.3.7"
+    "vue-tsc": "^3.3.14"
   }
 }
