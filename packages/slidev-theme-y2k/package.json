@@ -27,7 +27,7 @@
   "devDependencies": {
     "@slidev/cli": "^53.1.0",
     "@slidev/client": "^53.1.0",
-    "playwright-chromium": "^1.61.1",
+    "playwright-chromium": "^1.65.0",
     "slidev-addon-y2k": "workspace:*"
   },
   "//": "Learn more: https://sli.dev/guide/write-theme.html",
