@@ -21,10 +21,10 @@
     "vue": "^3"
   },
   "dependencies": {
-    "@slidev/types": "^53.0.0",
+    "@slidev/types": "^53.1.0",
     "slidev-theme-y2k": "workspace:*"
   },
   "devDependencies": {
-    "@slidev/cli": "^53.0.0"
+    "@slidev/cli": "^53.1.0"
   }
 }

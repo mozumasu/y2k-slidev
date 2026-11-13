@@ -22,11 +22,11 @@
     "vue": "^3"
   },
   "dependencies": {
-    "@slidev/types": "^53.0.0"
+    "@slidev/types": "^53.1.0"
   },
   "devDependencies": {
-    "@slidev/cli": "^53.0.0",
-    "@slidev/client": "^53.0.0",
+    "@slidev/cli": "^53.1.0",
+    "@slidev/client": "^53.1.0",
     "playwright-chromium": "^1.61.1",
     "slidev-addon-y2k": "workspace:*"
   },
